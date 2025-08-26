@@ -1425,13 +1425,13 @@ pub type WebKitPolicyDecisionPrivate = *mut _WebKitPolicyDecisionPrivate;
 #[repr(C)]
 pub struct WebKitPrintCustomWidgetClass {
   pub parent_class: gobject::GObjectClass,
-  pub apply: Option<unsafe extern "C" fn(*mut WebKitPrintCustomWidget, *mut gtk4::GtkWidget)>,
+  pub apply: Option<unsafe extern "C" fn(*mut WebKitPrintCustomWidget, *mut gtk4::ffi::GtkWidget)>,
   pub update: Option<
     unsafe extern "C" fn(
       *mut WebKitPrintCustomWidget,
-      *mut gtk4::GtkWidget,
+      *mut gtk4::ffi::GtkWidget,
       *mut gtk4::GtkPageSetup,
-      *mut gtk4::GtkPrintSettings,
+      *mut gtk4::ffi::GtkPrintSettings,
     ),
   >,
   pub _webkit_reserved0: Option<unsafe extern "C" fn()>,
@@ -2047,7 +2047,7 @@ pub struct WebKitWebViewClass {
     ) -> gboolean,
   >,
   pub create: Option<
-    unsafe extern "C" fn(*mut WebKitWebView, *mut WebKitNavigationAction) -> *mut gtk4::GtkWidget,
+    unsafe extern "C" fn(*mut WebKitWebView, *mut WebKitNavigationAction) -> *mut gtk4::ffi::GtkWidget,
   >,
   pub ready_to_show: Option<unsafe extern "C" fn(*mut WebKitWebView)>,
   pub run_as_modal: Option<unsafe extern "C" fn(*mut WebKitWebView)>,
@@ -4270,7 +4270,7 @@ extern "C" {
   // WebKitContextMenuItem
   //=========================================================================
   pub fn webkit_context_menu_item_get_type() -> GType;
-  pub fn webkit_context_menu_item_new(action: *mut gtk4::GtkAction) -> *mut WebKitContextMenuItem;
+  pub fn webkit_context_menu_item_new(action: *mut gtk4::ffi::GtkAction) -> *mut WebKitContextMenuItem;
   #[cfg(feature = "v2_18")]
   #[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
   pub fn webkit_context_menu_item_new_from_gaction(
@@ -4292,7 +4292,7 @@ extern "C" {
   ) -> *mut WebKitContextMenuItem;
   pub fn webkit_context_menu_item_get_action(
     item: *mut WebKitContextMenuItem,
-  ) -> *mut gtk4::GtkAction;
+  ) -> *mut gtk4::ffi::GtkAction;
   #[cfg(feature = "v2_18")]
   #[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
   pub fn webkit_context_menu_item_get_gaction(
@@ -4828,7 +4828,7 @@ extern "C" {
   #[cfg(feature = "v2_16")]
   #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
   pub fn webkit_print_custom_widget_new(
-    widget: *mut gtk4::GtkWidget,
+    widget: *mut gtk4::ffi::GtkWidget,
     title: *const c_char,
   ) -> *mut WebKitPrintCustomWidget;
   #[cfg(feature = "v2_16")]
@@ -4840,7 +4840,7 @@ extern "C" {
   #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
   pub fn webkit_print_custom_widget_get_widget(
     print_custom_widget: *mut WebKitPrintCustomWidget,
-  ) -> *mut gtk4::GtkWidget;
+  ) -> *mut gtk4::ffi::GtkWidget;
 
   //=========================================================================
   // WebKitPrintOperation
@@ -4852,7 +4852,7 @@ extern "C" {
   ) -> *mut gtk4::GtkPageSetup;
   pub fn webkit_print_operation_get_print_settings(
     print_operation: *mut WebKitPrintOperation,
-  ) -> *mut gtk4::GtkPrintSettings;
+  ) -> *mut gtk4::ffi::GtkPrintSettings;
   pub fn webkit_print_operation_print(print_operation: *mut WebKitPrintOperation);
   pub fn webkit_print_operation_run_dialog(
     print_operation: *mut WebKitPrintOperation,
@@ -4864,7 +4864,7 @@ extern "C" {
   );
   pub fn webkit_print_operation_set_print_settings(
     print_operation: *mut WebKitPrintOperation,
-    print_settings: *mut gtk4::GtkPrintSettings,
+    print_settings: *mut gtk4::ffi::GtkPrintSettings,
   );
 
   //=========================================================================
@@ -5874,19 +5874,19 @@ extern "C" {
   // WebKitWebView
   //=========================================================================
   pub fn webkit_web_view_get_type() -> GType;
-  pub fn webkit_web_view_new() -> *mut gtk4::GtkWidget;
-  pub fn webkit_web_view_new_with_context(context: *mut WebKitWebContext) -> *mut gtk4::GtkWidget;
+  pub fn webkit_web_view_new() -> *mut gtk4::ffi::GtkWidget;
+  pub fn webkit_web_view_new_with_context(context: *mut WebKitWebContext) -> *mut gtk4::ffi::GtkWidget;
   pub fn webkit_web_view_new_with_related_view(
     web_view: *mut WebKitWebView,
-  ) -> *mut gtk4::GtkWidget;
+  ) -> *mut gtk4::ffi::GtkWidget;
   #[cfg(feature = "v2_6")]
   #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
-  pub fn webkit_web_view_new_with_settings(settings: *mut WebKitSettings) -> *mut gtk4::GtkWidget;
+  pub fn webkit_web_view_new_with_settings(settings: *mut WebKitSettings) -> *mut gtk4::ffi::GtkWidget;
   #[cfg(feature = "v2_6")]
   #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
   pub fn webkit_web_view_new_with_user_content_manager(
     user_content_manager: *mut WebKitUserContentManager,
-  ) -> *mut gtk4::GtkWidget;
+  ) -> *mut gtk4::ffi::GtkWidget;
   #[cfg(feature = "v2_40")]
   #[cfg_attr(docsrs, doc(cfg(feature = "v2_40")))]
   pub fn webkit_web_view_call_async_javascript_function(
