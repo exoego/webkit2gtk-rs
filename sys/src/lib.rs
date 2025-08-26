@@ -2047,7 +2047,10 @@ pub struct WebKitWebViewClass {
     ) -> gboolean,
   >,
   pub create: Option<
-    unsafe extern "C" fn(*mut WebKitWebView, *mut WebKitNavigationAction) -> *mut gtk4::ffi::GtkWidget,
+    unsafe extern "C" fn(
+      *mut WebKitWebView,
+      *mut WebKitNavigationAction,
+    ) -> *mut gtk4::ffi::GtkWidget,
   >,
   pub ready_to_show: Option<unsafe extern "C" fn(*mut WebKitWebView)>,
   pub run_as_modal: Option<unsafe extern "C" fn(*mut WebKitWebView)>,
@@ -4270,7 +4273,9 @@ extern "C" {
   // WebKitContextMenuItem
   //=========================================================================
   pub fn webkit_context_menu_item_get_type() -> GType;
-  pub fn webkit_context_menu_item_new(action: *mut gtk4::ffi::GtkAction) -> *mut WebKitContextMenuItem;
+  pub fn webkit_context_menu_item_new(
+    action: *mut gtk4::ffi::GtkAction,
+  ) -> *mut WebKitContextMenuItem;
   #[cfg(feature = "v2_18")]
   #[cfg_attr(docsrs, doc(cfg(feature = "v2_18")))]
   pub fn webkit_context_menu_item_new_from_gaction(
