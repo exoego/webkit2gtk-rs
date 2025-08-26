@@ -5876,8 +5876,9 @@ extern "C" {
   pub fn webkit_web_view_get_type() -> GType;
   pub fn webkit_web_view_new() -> *mut gtk4::GtkWidget;
   pub fn webkit_web_view_new_with_context(context: *mut WebKitWebContext) -> *mut gtk4::GtkWidget;
-  pub fn webkit_web_view_new_with_related_view(web_view: *mut WebKitWebView)
-    -> *mut gtk4::GtkWidget;
+  pub fn webkit_web_view_new_with_related_view(
+    web_view: *mut WebKitWebView
+  ) -> *mut gtk4::GtkWidget;
   #[cfg(feature = "v2_6")]
   #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
   pub fn webkit_web_view_new_with_settings(settings: *mut WebKitSettings) -> *mut gtk4::GtkWidget;
