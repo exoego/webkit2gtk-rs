@@ -4,7 +4,7 @@
 
 glib::wrapper! {
     #[doc(alias = "WebKitWebViewBase")]
-    pub struct WebViewBase(Object<ffi::WebKitWebViewBase, ffi::WebKitWebViewBaseClass>) @extends gtk::Container, gtk::Widget, @implements gtk::Buildable;
+    pub struct WebViewBase(Object<ffi::WebKitWebViewBase, ffi::WebKitWebViewBaseClass>) @extends gtk4::Container, gtk4::Widget, @implements gtk4::Buildable;
 
     match fn {
         type_ => || ffi::webkit_web_view_base_get_type(),

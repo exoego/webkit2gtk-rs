@@ -47,7 +47,7 @@ pub trait FileChooserRequestExt: IsA<FileChooserRequest> + sealed::Sealed + 'sta
 
   #[doc(alias = "webkit_file_chooser_request_get_mime_types_filter")]
   #[doc(alias = "get_mime_types_filter")]
-  fn mime_types_filter(&self) -> Option<gtk::FileFilter> {
+  fn mime_types_filter(&self) -> Option<gtk4::FileFilter> {
     unsafe {
       from_glib_none(ffi::webkit_file_chooser_request_get_mime_types_filter(
         self.as_ref().to_glib_none().0,
@@ -85,7 +85,7 @@ pub trait FileChooserRequestExt: IsA<FileChooserRequest> + sealed::Sealed + 'sta
     }
   }
 
-  fn filter(&self) -> Option<gtk::FileFilter> {
+  fn filter(&self) -> Option<gtk4::FileFilter> {
     ObjectExt::property(self.as_ref(), "filter")
   }
 

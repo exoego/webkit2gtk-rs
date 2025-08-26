@@ -26,13 +26,13 @@ extern crate webkit2gtk;
 
 #[cfg(feature = "v2_4")]
 use glib::ToVariant;
-use gtk::{prelude::*, Window, WindowType};
+use gtk4::{prelude::*, Window, WindowType};
 use webkit2gtk::{SettingsExt, WebContext, WebContextExt, WebView, WebViewExt};
 #[cfg(feature = "v2_6")]
 use webkit2gtk::{UserContentManager, WebViewExtManual};
 
 fn main() {
-  gtk::init().unwrap();
+  gtk4::init().unwrap();
 
   let window = Window::new(WindowType::Toplevel);
   let context = WebContext::default().unwrap();
@@ -70,9 +70,9 @@ fn main() {
   });
 
   window.connect_delete_event(|_, _| {
-    gtk::main_quit();
+    gtk4::main_quit();
     glib::Propagation::Proceed
   });
 
-  gtk::main();
+  gtk4::main();
 }

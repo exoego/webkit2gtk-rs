@@ -21,7 +21,7 @@ impl ContextMenuItem {
   //#[cfg_attr(feature = "v2_18", deprecated = "Since 2.18")]
   //#[allow(deprecated)]
   //#[doc(alias = "webkit_context_menu_item_new")]
-  //pub fn new(action: /*Ignored*/&gtk::Action) -> ContextMenuItem {
+  //pub fn new(action: /*Ignored*/&gtk4::Action) -> ContextMenuItem {
   //    unsafe { TODO: call ffi:webkit_context_menu_item_new() }
   //}
 
@@ -98,7 +98,7 @@ pub trait ContextMenuItemExt: IsA<ContextMenuItem> + sealed::Sealed + 'static {
   //#[allow(deprecated)]
   //#[doc(alias = "webkit_context_menu_item_get_action")]
   //#[doc(alias = "get_action")]
-  //fn action(&self) -> /*Ignored*/Option<gtk::Action> {
+  //fn action(&self) -> /*Ignored*/Option<gtk4::Action> {
   //    unsafe { TODO: call ffi:webkit_context_menu_item_get_action() }
   //}
 
