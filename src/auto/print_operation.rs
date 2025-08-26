@@ -66,13 +66,13 @@ impl PrintOperationBuilder {
     }
   }
 
-  pub fn page_setup(self, page_setup: &gtk4::PageSetup) -> Self {
+  pub fn page_setup(self, page_setup: &gtk::PageSetup) -> Self {
     Self {
       builder: self.builder.property("page-setup", page_setup.clone()),
     }
   }
 
-  pub fn print_settings(self, print_settings: &gtk4::PrintSettings) -> Self {
+  pub fn print_settings(self, print_settings: &gtk::PrintSettings) -> Self {
     Self {
       builder: self
         .builder
@@ -102,7 +102,7 @@ mod sealed {
 pub trait PrintOperationExt: IsA<PrintOperation> + sealed::Sealed + 'static {
   #[doc(alias = "webkit_print_operation_get_page_setup")]
   #[doc(alias = "get_page_setup")]
-  fn page_setup(&self) -> Option<gtk4::PageSetup> {
+  fn page_setup(&self) -> Option<gtk::PageSetup> {
     unsafe {
       from_glib_none(ffi::webkit_print_operation_get_page_setup(
         self.as_ref().to_glib_none().0,
@@ -112,7 +112,7 @@ pub trait PrintOperationExt: IsA<PrintOperation> + sealed::Sealed + 'static {
 
   #[doc(alias = "webkit_print_operation_get_print_settings")]
   #[doc(alias = "get_print_settings")]
-  fn print_settings(&self) -> Option<gtk4::PrintSettings> {
+  fn print_settings(&self) -> Option<gtk::PrintSettings> {
     unsafe {
       from_glib_none(ffi::webkit_print_operation_get_print_settings(
         self.as_ref().to_glib_none().0,
@@ -128,7 +128,7 @@ pub trait PrintOperationExt: IsA<PrintOperation> + sealed::Sealed + 'static {
   }
 
   #[doc(alias = "webkit_print_operation_run_dialog")]
-  fn run_dialog(&self, parent: Option<&impl IsA<gtk4::Window>>) -> PrintOperationResponse {
+  fn run_dialog(&self, parent: Option<&impl IsA<gtk::Window>>) -> PrintOperationResponse {
     unsafe {
       from_glib(ffi::webkit_print_operation_run_dialog(
         self.as_ref().to_glib_none().0,
@@ -138,7 +138,7 @@ pub trait PrintOperationExt: IsA<PrintOperation> + sealed::Sealed + 'static {
   }
 
   #[doc(alias = "webkit_print_operation_set_page_setup")]
-  fn set_page_setup(&self, page_setup: &gtk4::PageSetup) {
+  fn set_page_setup(&self, page_setup: &gtk::PageSetup) {
     unsafe {
       ffi::webkit_print_operation_set_page_setup(
         self.as_ref().to_glib_none().0,
@@ -148,7 +148,7 @@ pub trait PrintOperationExt: IsA<PrintOperation> + sealed::Sealed + 'static {
   }
 
   #[doc(alias = "webkit_print_operation_set_print_settings")]
-  fn set_print_settings(&self, print_settings: &gtk4::PrintSettings) {
+  fn set_print_settings(&self, print_settings: &gtk::PrintSettings) {
     unsafe {
       ffi::webkit_print_operation_set_print_settings(
         self.as_ref().to_glib_none().0,

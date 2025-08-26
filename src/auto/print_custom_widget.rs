@@ -25,7 +25,7 @@ impl PrintCustomWidget {
   #[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
   #[allow(deprecated)]
   #[doc(alias = "webkit_print_custom_widget_new")]
-  pub fn new(widget: &impl IsA<gtk4::Widget>, title: &str) -> PrintCustomWidget {
+  pub fn new(widget: &impl IsA<gtk::Widget>, title: &str) -> PrintCustomWidget {
     assert_initialized_main_thread!();
     unsafe {
       from_glib_full(ffi::webkit_print_custom_widget_new(
@@ -80,7 +80,7 @@ impl PrintCustomWidgetBuilder {
   #[cfg(feature = "v2_16")]
   #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
   #[cfg_attr(feature = "v2_40", deprecated = "Since 2.40")]
-  pub fn widget(self, widget: &impl IsA<gtk4::Widget>) -> Self {
+  pub fn widget(self, widget: &impl IsA<gtk::Widget>) -> Self {
     Self {
       builder: self.builder.property("widget", widget.clone().upcast()),
     }
@@ -116,7 +116,7 @@ pub trait PrintCustomWidgetExt: IsA<PrintCustomWidget> + sealed::Sealed + 'stati
   #[allow(deprecated)]
   #[doc(alias = "webkit_print_custom_widget_get_widget")]
   #[doc(alias = "get_widget")]
-  fn widget(&self) -> Option<gtk4::Widget> {
+  fn widget(&self) -> Option<gtk::Widget> {
     unsafe {
       from_glib_none(ffi::webkit_print_custom_widget_get_widget(
         self.as_ref().to_glib_none().0,
@@ -153,17 +153,17 @@ pub trait PrintCustomWidgetExt: IsA<PrintCustomWidget> + sealed::Sealed + 'stati
   #[cfg(feature = "v2_16")]
   #[cfg_attr(docsrs, doc(cfg(feature = "v2_16")))]
   #[doc(alias = "update")]
-  fn connect_update<F: Fn(&Self, &gtk4::PageSetup, &gtk4::PrintSettings) + 'static>(
+  fn connect_update<F: Fn(&Self, &gtk::PageSetup, &gtk::PrintSettings) + 'static>(
     &self,
     f: F,
   ) -> SignalHandlerId {
     unsafe extern "C" fn update_trampoline<
       P: IsA<PrintCustomWidget>,
-      F: Fn(&P, &gtk4::PageSetup, &gtk4::PrintSettings) + 'static,
+      F: Fn(&P, &gtk::PageSetup, &gtk::PrintSettings) + 'static,
     >(
       this: *mut ffi::WebKitPrintCustomWidget,
-      page_setup: *mut gtk4::ffi::GtkPageSetup,
-      print_settings: *mut gtk4::ffi::GtkPrintSettings,
+      page_setup: *mut gtk::ffi::GtkPageSetup,
+      print_settings: *mut gtk::ffi::GtkPrintSettings,
       f: glib::ffi::gpointer,
     ) {
       let f: &F = &*(f as *const F);

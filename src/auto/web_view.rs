@@ -55,7 +55,7 @@ use std::{boxed::Box as Box_, pin::Pin};
 
 glib::wrapper! {
     #[doc(alias = "WebKitWebView")]
-    pub struct WebView(Object<ffi::WebKitWebView, ffi::WebKitWebViewClass>) @extends WebViewBase, gtk4::Container, gtk4::Widget, @implements gtk4::Buildable;
+    pub struct WebView(Object<ffi::WebKitWebView, ffi::WebKitWebViewClass>) @extends WebViewBase, gtk::Container, gtk::Widget, @implements gtk::Buildable;
 
     match fn {
         type_ => || ffi::webkit_web_view_get_type(),
@@ -68,7 +68,7 @@ impl WebView {
   #[doc(alias = "webkit_web_view_new")]
   pub fn new() -> WebView {
     assert_initialized_main_thread!();
-    unsafe { gtk4::Widget::from_glib_none(ffi::webkit_web_view_new()).unsafe_cast() }
+    unsafe { gtk::Widget::from_glib_none(ffi::webkit_web_view_new()).unsafe_cast() }
   }
 
   #[doc(alias = "webkit_web_view_new_with_context")]
@@ -76,7 +76,7 @@ impl WebView {
   pub fn with_context(context: &impl IsA<WebContext>) -> WebView {
     skip_assert_initialized!();
     unsafe {
-      gtk4::Widget::from_glib_none(ffi::webkit_web_view_new_with_context(
+      gtk::Widget::from_glib_none(ffi::webkit_web_view_new_with_context(
         context.as_ref().to_glib_none().0,
       ))
       .unsafe_cast()
@@ -90,7 +90,7 @@ impl WebView {
   pub fn with_related_view(web_view: &impl IsA<WebView>) -> WebView {
     skip_assert_initialized!();
     unsafe {
-      gtk4::Widget::from_glib_full(ffi::webkit_web_view_new_with_related_view(
+      gtk::Widget::from_glib_full(ffi::webkit_web_view_new_with_related_view(
         web_view.as_ref().to_glib_none().0,
       ))
       .unsafe_cast()
@@ -104,7 +104,7 @@ impl WebView {
   pub fn with_settings(settings: &impl IsA<Settings>) -> WebView {
     skip_assert_initialized!();
     unsafe {
-      gtk4::Widget::from_glib_none(ffi::webkit_web_view_new_with_settings(
+      gtk::Widget::from_glib_none(ffi::webkit_web_view_new_with_settings(
         settings.as_ref().to_glib_none().0,
       ))
       .unsafe_cast()
@@ -118,7 +118,7 @@ impl WebView {
   pub fn with_user_content_manager(user_content_manager: &impl IsA<UserContentManager>) -> WebView {
     skip_assert_initialized!();
     unsafe {
-      gtk4::Widget::from_glib_none(ffi::webkit_web_view_new_with_user_content_manager(
+      gtk::Widget::from_glib_none(ffi::webkit_web_view_new_with_user_content_manager(
         user_content_manager.as_ref().to_glib_none().0,
       ))
       .unsafe_cast()
@@ -311,13 +311,13 @@ impl WebViewBuilder {
     }
   }
 
-  pub fn child(self, child: &impl IsA<gtk4::Widget>) -> Self {
+  pub fn child(self, child: &impl IsA<gtk::Widget>) -> Self {
     Self {
       builder: self.builder.property("child", child.clone().upcast()),
     }
   }
 
-  //pub fn resize_mode(self, resize_mode: /*Ignored*/gtk4::ResizeMode) -> Self {
+  //pub fn resize_mode(self, resize_mode: /*Ignored*/gtk::ResizeMode) -> Self {
   //    Self { builder: self.builder.property("resize-mode", resize_mode), }
   //}
 
@@ -370,7 +370,7 @@ impl WebViewBuilder {
 
   //    #[cfg(feature = "gtk_v3")]
   #[cfg_attr(docsrs, doc(cfg(feature = "gtk_v3")))]
-  //pub fn halign(self, halign: /*Ignored*/gtk4::Align) -> Self {
+  //pub fn halign(self, halign: /*Ignored*/gtk::Align) -> Self {
   //    Self { builder: self.builder.property("halign", halign), }
   //}
 
@@ -500,7 +500,7 @@ impl WebViewBuilder {
     }
   }
 
-  pub fn parent(self, parent: &impl IsA<gtk4::Container>) -> Self {
+  pub fn parent(self, parent: &impl IsA<gtk::Container>) -> Self {
     Self {
       builder: self.builder.property("parent", parent.clone().upcast()),
     }
@@ -518,7 +518,7 @@ impl WebViewBuilder {
     }
   }
 
-  //pub fn style(self, style: &impl IsA</*Ignored*/gtk4::Style>) -> Self {
+  //pub fn style(self, style: &impl IsA</*Ignored*/gtk::Style>) -> Self {
   //    Self { builder: self.builder.property("style", style.clone().upcast()), }
   //}
 
@@ -542,7 +542,7 @@ impl WebViewBuilder {
 
   //    #[cfg(feature = "gtk_v3")]
   #[cfg_attr(docsrs, doc(cfg(feature = "gtk_v3")))]
-  //pub fn valign(self, valign: /*Ignored*/gtk4::Align) -> Self {
+  //pub fn valign(self, valign: /*Ignored*/gtk::Align) -> Self {
   //    Self { builder: self.builder.property("valign", valign), }
   //}
   #[cfg(feature = "gtk_v3")]
@@ -2134,18 +2134,18 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
   #[cfg(feature = "v2_6")]
   #[cfg_attr(docsrs, doc(cfg(feature = "v2_6")))]
   #[doc(alias = "create")]
-  fn connect_create<F: Fn(&Self, &NavigationAction) -> Option<gtk4::Widget> + 'static>(
+  fn connect_create<F: Fn(&Self, &NavigationAction) -> Option<gtk::Widget> + 'static>(
     &self,
     f: F,
   ) -> SignalHandlerId {
     unsafe extern "C" fn create_trampoline<
       P: IsA<WebView>,
-      F: Fn(&P, &NavigationAction) -> Option<gtk4::Widget> + 'static,
+      F: Fn(&P, &NavigationAction) -> Option<gtk::Widget> + 'static,
     >(
       this: *mut ffi::WebKitWebView,
       navigation_action: *mut ffi::WebKitNavigationAction,
       f: glib::ffi::gpointer,
-    ) -> *mut gtk4::ffi::GtkWidget {
+    ) -> *mut gtk::ffi::GtkWidget {
       let f: &F = &*(f as *const F);
       f(
         WebView::from_glib_borrow(this).unsafe_cast_ref(),
